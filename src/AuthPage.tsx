@@ -24,7 +24,7 @@ const AuthPage = () => {
     const code = params.code;
     const clientId = "618692533418907";
     const clientSecret = "ec3c052b63c820dc13b9a78ca52d65ea";
-    const redirectUri = "https://instagram-rho-ashen.vercel.app/";
+    const redirectUri = "https://instagram-jade-iota.vercel.app/";
     const grantType = "authorization_code";
 
     // console.log("Before Token Response");
@@ -107,7 +107,7 @@ const AuthPage = () => {
 
   const handleLogin = () => {
     const clientId = "618692533418907";
-    const redirectUri = "https://instagram-rho-ashen.vercel.app/";
+    const redirectUri = "https://instagram-jade-iota.vercel.app/";
     const scope = "user_profile,user_media";
     const responseType = "code";
     const url = `https://api.instagram.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`;

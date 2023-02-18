@@ -57,7 +57,7 @@ var AuthPage = function () {
             code = params.code;
             clientId = "618692533418907";
             clientSecret = "ec3c052b63c820dc13b9a78ca52d65ea";
-            redirectUri = "https://instagram-rho-ashen.vercel.app/";
+            redirectUri = "https://instagram-jade-iota.vercel.app/";
             grantType = "authorization_code";
             url = "https://api.instagram.com/oauth/access_token";
             headers = {
@@ -82,7 +82,7 @@ var AuthPage = function () {
     }); };
     var handleLogin = function () {
         var clientId = "618692533418907";
-        var redirectUri = "https://instagram-rho-ashen.vercel.app/";
+        var redirectUri = "https://instagram-jade-iota.vercel.app/";
         var scope = "user_profile,user_media";
         var responseType = "code";
         var url = "https://api.instagram.com/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&scope=" + scope + "&response_type=" + responseType;

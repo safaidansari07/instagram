@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import oauth from "axios-oauth-client";
 const getAuthorizationCode = oauth.authorizationCode(
   axios.create(),
-  "https://oauth.com/2.0/token", // OAuth 2.0 token endpoint
+  "https://cors-anywhere.herokuapp.com/https://api.instagram.com/oauth/access_token", // OAuth 2.0 token endpoint
   "618692533418907",
   "ec3c052b63c820dc13b9a78ca52d65ea",
   "https://instagram-jade-iota.vercel.app/" // Redirect URL for your app

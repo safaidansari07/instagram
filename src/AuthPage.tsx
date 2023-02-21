@@ -18,8 +18,6 @@ import React, { useEffect, useState } from "react";
 //   "https://instagram-jade-iota.vercel.app/" // Redirect URL for your app
 // );
 
-const { post } = require("request");
-const { promisify } = require("util");
 const AuthPage = () => {
   // const [photos, setPhotos] = useState<InstagramPhoto[]>([]);
 
@@ -28,46 +26,42 @@ const AuthPage = () => {
   }, []);
 
   const getPhotos = async () => {
-    try {
-      const params = Object.fromEntries(
-        new URL(window.location.href).searchParams
-      );
-      console.log(params.code);
+    const params = Object.fromEntries(
+      new URL(window.location.href).searchParams
+    );
+    console.log(params.code);
 
-      const code = params.code;
-      // const auth = await getAuthorizationCode(code, "OPTIONAL_SCOPES");
+    const code = params.code;
+    const clientId = "618692533418907";
+    const clientSecret = "ec3c052b63c820dc13b9a78ca52d65ea";
+    const redirectUri = "https://instagram-jade-iota.vercel.app/";
+    const grantType = "authorization_code";
 
-      // console.log("Auth Token", auth);
+    const form = {
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: grantType,
+      redirect_uri: redirectUri,
+      code: code,
+    };
 
-      const clientId = "618692533418907";
-      const clientSecret = "ec3c052b63c820dc13b9a78ca52d65ea";
-      const redirectUri = "https://instagram-jade-iota.vercel.app/";
-      const grantType = "authorization_code";
-
-      const postAsync = promisify(post);
-
-      const form = {
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: grantType,
-        redirect_uri: redirectUri,
-        code: code,
-      };
-
-      let { body, statusCode } = await postAsync({
-        // let result = await postAsync({
-        url: "https://api.instagram.com/oauth/access_token",
-        form,
-        headers: {
-          "content-type": "multipart/form-data",
-          host: "api.instagram.com",
-        },
-      });
-
-      console.log("Body", body);
-    } catch (error) {
-      console.log("Error", error);
-    }
+    $.ajax({
+      url: "https://api.instagram.com/oauth/access_token",
+      dataType: "jsonp",
+      type: "POST",
+      data: form,
+      headers: {
+        "content-type": "multipart/form-data",
+        host: "api.instagram.com",
+      },
+      success: function (data) {
+        console.log("Data", data);
+        // Do something
+      },
+      error: function (error) {
+        console.log("Error", error);
+      },
+    });
 
     // console.log("Before Token Response");
 
